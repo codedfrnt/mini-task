@@ -92,6 +92,26 @@ main {
     border: 2px solid #fff;
 }
 
+#connectivity-status {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    color: #fff;
+    background: #e74c3c;
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 1000;
+}
+#connectivity-status.online {
+    background: #27ae60;
+}
+#connectivity-status.offline {
+    background: #e74c3c;
+}
+
 @media (max-width: 600px) {
     .game-board {
         grid-template-columns: repeat(4, 60px);

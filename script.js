@@ -8,6 +8,32 @@ let matchedCards = 0;
 const gameBoard = document.getElementById('game-board');
 const restartBtn = document.getElementById('restart-btn');
 
+// Connectivity status banner
+const connectivityStatus = document.getElementById('connectivity-status');
+
+function updateConnectivityStatus() {
+    if (navigator.onLine) {
+        connectivityStatus.textContent = 'You are back online!';
+        connectivityStatus.className = 'online';
+        connectivityStatus.style.display = 'block';
+        setTimeout(() => {
+            connectivityStatus.style.display = 'none';
+        }, 2000);
+    } else {
+        connectivityStatus.textContent = 'You are offline. Some features may not work.';
+        connectivityStatus.className = 'offline';
+        connectivityStatus.style.display = 'block';
+    }
+}
+
+window.addEventListener('online', updateConnectivityStatus);
+window.addEventListener('offline', updateConnectivityStatus);
+
+// Show status if offline on load
+if (!navigator.onLine) {
+    updateConnectivityStatus();
+}
+
 // Shuffle function (Fisher-Yates)
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
